@@ -24,13 +24,11 @@ https://www.ruby-lang.org/en/downloads/
 Install Rails
 ```
 https://guides.rubyonrails.org/v5.0/getting_started.html
-
 ```
 
 Install Redis
 ```
 https://redis.io/download/
-
 ```
 
 ### Make it work on your local machine
@@ -48,6 +46,10 @@ PLEASE MAKE SURE REDIS-SERVER IS RUNNING ON YOUR SYSTEM BY DOING
 ```
 redis-server
 ```
+
+## Deployment
+
+* [Click Here](https://midstay-flats.herokuapp.com/) 
 ## Built With
 
 * [Ruby](https://www.ruby-lang.org/en/) - Language
