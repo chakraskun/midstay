@@ -1,24 +1,54 @@
-# README
+# Midstay Flats
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+```
+Ruby 3.1.0
+Rails 7.0.3
+Redis
+```
 
-* Configuration
+### Installing
 
-* Database creation
+You need to have Ruby and Rails installed on your system
 
-* Database initialization
+Install Ruby
+```
+https://www.ruby-lang.org/en/downloads/
+```
 
-* How to run the test suite
+Install Rails
+```
+https://guides.rubyonrails.org/v5.0/getting_started.html
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
+Install Redis
+```
+https://redis.io/download/
 
-* ...
+```
+
+### Make it work on your local machine
+After all the prerequisites installed, then you can open terminal and then do
+```
+clone repo
+cd midstay
+rails db:setup
+rails db:migrate
+rails dummies:neighbor
+rails s
+```
+
+PLEASE MAKE SURE REDIS-SERVER IS RUNNING ON YOUR SYSTEM BY DOING
+```
+redis-server
+```
+## Built With
+
+* [Ruby](https://www.ruby-lang.org/en/) - Language
+* [Rails](https://rubyonrails.org/) - Framework
