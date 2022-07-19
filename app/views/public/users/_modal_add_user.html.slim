@@ -1,0 +1,37 @@
+#add.modal.fade[
+  aria-hidden="true" 
+  role="dialog"
+  tabindex="-1"
+] 
+  .modal-dialog.modal-dialog-centered.modal-lg role="document" 
+    .modal-content
+      = form_with(model: new_user, id: "user_form", url: users_path, data: { turbo_frame: "_top"}, method: :post) do |f|
+        .modal-header
+          h5#modalLabel.modal-title Add User
+          button.close aria-label="Close" data-dismiss="modal" type="button" 
+            i.ki.ki-close aria-hidden="true"
+        .modal-body
+          .form-group
+            label Name
+            .input-group
+              input.form-control[
+                name="user[name]"
+                placeholder=("Name")
+                type="text"
+              ]
+          .form-group
+            label Email
+            .input-group
+              input.form-control[
+                name="user[email]"
+                placeholder=("email")
+                type="text"
+              ]
+        .modal-footer
+          a.btn.btn-light-danger.font-weight-bold data-dismiss="modal" type="button" Cancel
+          button.btn.btn-primary.font-weight-bold[
+            type="submit"
+            data-controller="modal"
+            data-action="click->modal#handleClick"
+            data-modal-target="#add"
+          ] Save

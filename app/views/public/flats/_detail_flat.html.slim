@@ -1,0 +1,37 @@
+.modal.fade[
+  id="detail-flat-#{flat.id}"
+  aria-hidden="true" 
+  role="dialog"
+  tabindex="-1"
+] 
+  .modal-dialog.modal-dialog-centered.modal-lg role="document" 
+    .modal-content
+      .modal-header
+        h5#modalLabel.modal-title Detail Flat #{flat.name}
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          i.ki.ki-close aria-hidden="true"
+      .modal-body
+        h5#modalLabel.modal-title List Users in flat #{flat.name}
+        table.table
+          thead
+            tr
+              th[scope="col"] #
+              th[scope="col"] Name
+              th[scope="col"] Actions
+          tbody
+            - flat.users.each_with_index do |user, index|
+              tr
+                td
+                  = index + 1
+                td
+                  = user.name
+                td
+                  = form_with(model: user, id: "flat_form", url:  update_flat_path(user.id), data: { turbo_frame: "_top"}, method: :put) do |f|
+                    = f.hidden_field :flat_id, value: ''
+                    button.btn.btn-sm.btn-light-danger.font-weight-bold[
+                      type="submit"
+                      data-controller="modal"
+                      data-action="click->modal#handleClick"
+                      data-modal-target="#addFlat"
+                    ]
+                      | Remove from this flat

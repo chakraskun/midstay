@@ -1,0 +1,20 @@
+- users.each_with_index do |user, i|
+  tr
+    td[
+      style="width:5%"
+    ]
+      = i+1
+    td[
+      style="width:20%"
+    ]
+      = user.name
+    td[
+      style="width:30%"
+    ]
+      = user.email
+    td[
+      style="width:45%"
+    ]
+      = form_with(model: user, id: "user_flat_form", url: update_flat_path(user.id), data: { turbo_frame: "_top"}, method: :put) do |f|
+        = f.select :flat_id, options_for_select(options_flats, user.flat_id)
+        = f.submit "Update", class: "btn btn-sm btn-primary ml-3"

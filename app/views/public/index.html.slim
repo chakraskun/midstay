@@ -1,0 +1,81 @@
+#kt_content.content.d-flex.flex-column.flex-column-fluid
+  .row.d-flex.justify-content-center
+    .col-6
+      .d-flex.flex-column.flex-column-fluid
+        #notification_error
+          = render partial: "notifications", locals: {var: @new_user}
+  = turbo_stream_from "notif"
+  .row.d-flex.justify-content-center.fixed-top.mt-4
+    .col-6
+      .d-flex.flex-column.flex-column-fluid
+        #notification_success
+          = render partial: "notifications_success", locals: {var: @new_user, status: "hide", message: ""}
+  .row.d-flex
+    .col-6
+      .d-flex.flex-column-fluid
+        .container-fluid
+          = turbo_stream_from "users"
+          .card.card-custom
+            .card-header
+              .card-title
+                span.card-icon
+                  i.flaticon2-favourite.text-primary
+                h3.card-label List User
+                span.font-size-sm.text-dark-50.font-weight-bold[
+                  id="total_users"
+                ]
+                  = render partial: "public/users/total_users", locals: { total_users: @total_users }
+              .card-toolbar.ml-auto
+                button.btn.btn-primary.font-weight-bolder.mb-2 data-target="#add" data-toggle="modal" type="button"
+                  i.la.la-plus
+                  | Add User
+            .card-body
+              table.table
+                thead
+                  tr
+                    th[scope="col"] #
+                    th[scope="col"] Name
+                    th[scope="col"] Location
+                    th[scope="col"] Flat
+                tbody[
+                  id="users_list"
+                ]
+                  = render partial: "public/users/users_list", locals: { users: @users, flats: @flats }
+
+    .col-6
+      .d-flex.flex-column-fluid
+        .container-fluid
+          = turbo_stream_from "flats"
+          .card.card-custom
+            .card-header
+              .card-title
+                span.card-icon
+                  i.flaticon2-favourite.text-primary
+                h3.card-label List Flats
+                span.font-size-sm.text-dark-50.font-weight-bold[
+                  id="total_flats"
+                ]
+                  = render partial: "public/flats/total_flats", locals: { total_flats: @total_flats }
+              .card-toolbar.ml-auto
+                button.btn.btn-primary.font-weight-bolder.mb-2 data-target="#addFlat" data-toggle="modal" type="button"
+                  i.la.la-plus
+                  | Add Flat
+            .card-body
+              table.table
+                thead
+                  tr
+                    th[scope="col"] #
+                    th[scope="col"] Name
+                    th[scope="col"] Location
+                    th[scope="col"] Total Users
+                    th[scope="col"] Actions
+                tbody[
+                  id="flats_list"
+                ]
+                  = render partial: "public/flats/flats_list", locals: { flats: @flats }
+
+  = render "public/users/modal_add_user", new_user: @new_user
+  = render "public/flats/modal_add_flat", new_flat: @new_flat
+
+/ - Asset.all.each do |asset|
+  = render "admin/assets/modal_sell_asset", asset: asset, asset_sale: asset.asset_sales.new

@@ -1,0 +1,28 @@
+- flats.each_with_index do |flat, i|
+  tr
+    td[
+      style="width:5%"
+    ]
+      = i+1
+    td[
+      style="width:20%"
+    ]
+      = flat.name
+    td[
+      style="width:30%"
+    ]
+      = flat.location
+    td[
+      style="width:35%"
+    ]
+      = flat.users.count
+    td[
+      style="width:35%"
+    ]
+      button.btn.btn-sm.btn-light-primary[
+        data-target="#detail-flat-#{flat.id}"
+        data-toggle="modal"
+        type="button"
+      ]
+        i.fa.fa-eye.pl-0
+      = render "public/flats/detail_flat", flat: flat
