@@ -11,7 +11,7 @@
         #notification_success
           = render partial: "notifications_success", locals: {var: @new_user, status: "hide", message: ""}
   .row.d-flex
-    .col-6
+    .col-lg-6.col-sm-12.my-3
       .d-flex.flex-column-fluid
         .container-fluid
           = turbo_stream_from "users"
@@ -42,7 +42,7 @@
                 ]
                   = render partial: "public/users/users_list", locals: { users: @users, flats: @flats }
 
-    .col-6
+    .col-lg-6.col-sm-12.my-3
       .d-flex.flex-column-fluid
         .container-fluid
           = turbo_stream_from "flats"
