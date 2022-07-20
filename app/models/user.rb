@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   belongs_to :flat, optional: true
+  validates :name, presence: true
   validates_uniqueness_of :email
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 

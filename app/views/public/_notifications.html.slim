@@ -1,6 +1,6 @@
 - if var.errors.any?
-  #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert"
-    | #{pluralize(var.errors.full_messages.count, "error")} found:
+  #error_explanation.alert.alert-danger.alert-dismissible.fade.show.font-weight-bolder role="alert"
+    | #{pluralize(var.errors.full_messages.count, "error")} found: 
     | #{var.errors.full_messages.join(", ")}
     button.close[type="button" data-dismiss="alert" aria-label="Close"]
       span[aria-hidden="true"]

@@ -1,7 +1,6 @@
 class FlatsController < ::ApplicationController
   def create
     flat = Flat.new(flat_params)
-    flat.assign_neighborhood
     unless flat.save
       render(
         turbo_stream: turbo_stream.update(
